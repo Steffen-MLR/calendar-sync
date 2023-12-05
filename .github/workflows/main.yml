@@ -21,4 +21,9 @@ jobs:
             master
       - name: execute py script # run file
         run: |
-          python calendar.py -u "https://export.kalender.digital/ics/573896/f6d3f9c540594317cc03/tsvjugendraum.ics" -o public/info.ics
+          python calendar.py -u "https://export.kalender.digital/ics/573896/f6d3f9c540594317cc03/tsvjugendraum.ics" -o ./public/info.ics
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
